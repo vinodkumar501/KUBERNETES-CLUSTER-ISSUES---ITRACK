@@ -1,0 +1,16 @@
+$ kubectl top nodes
+NAME                                         CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
+gke-node2   261m         6%     6031Mi          48%       
+gke-node1  326m         8%     13434Mi         108% 
+
+
+https://raaviblog.com/how-to-find-the-current-cpu-and-memory-usage-of-all-the-pods-in-kubernetes-cluster/
+
+kubectl top pods --all-namespaces | sort --key 2 -b | awk 'NR<2{print $0;next}{print $0| "sort --key 4 --numeric -b --reverse"}'
+
+NAMESPACE     NAME                                             CPU(cores)   MEMORY(bytes)   
+monitoring    alertmgr-58bb9cd44c-2w59k                           3m           17Mi            
+default       itrock-postgresql-84b9dd5fcd-7xrw9                  1m           11118Mi         
+default       itrock-app-5bb789bbb9-gfxjn                         2m           3222Mi          
+     
+          
